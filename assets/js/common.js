@@ -16,10 +16,22 @@ $(function () {
 
 
 window.addEventListener('keydown', (e) => {
+  // 押したボタンのkeyと関連されたaudioタグを取得できる
   const audio = document.querySelector(`audio[data-key="${e.key}"]`);
-  const drumItems = document.querySelectorAll('.drum-item');
-  console.log(audio);
-  audio.classList.add('played');
+  const drumItem = document.querySelector(`.drum-item[data-key="${e.key}"]`);
+  const keys = document.querySelectorAll('.drum-item');
+  // 関連したタグがなかった場合処理を終了する設定
+  if(!audio){
+    return;
+  }
+  // ボタンを押した時にスタートを０にする設定これをやらないと再生が終わるまで再生されない。
+  audio.currentTime = 0;
+  audio.play();
+  drumItem.classList.add('played');
+
+  keys.forEach(key => {
+    key.addEventListener('transitionend', () => {
+      key.classList.remove('played');
+    });
   });
-
-
+});

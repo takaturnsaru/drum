@@ -63,6 +63,7 @@ a{
     padding: 6px;
     border: 1px solid black;
     text-align: center;
+    transition: .07s;
   }
 
   .drum-item span{
