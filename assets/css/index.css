@@ -70,7 +70,7 @@ a{
     font-size: 12px;
   }
 
-  .played{
+  .drum-item.played{
     scale: 1.2;
     box-shadow: 0px 0px 10px yellow;
   }
